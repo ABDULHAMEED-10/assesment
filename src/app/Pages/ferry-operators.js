@@ -29,7 +29,7 @@ export default function FerryOperators() {
         <div className="absolute left-0 top-20 w-full lg:w-1/4 pr-2">
           <FilterBox onFilter={handleFilter} />
         </div>
-        <div className="ml-auto w-full lg:w-4/5 grid grid-cols-1 gap-5 pl-2">
+        <div className="ml-auto w-full lg:w-3/4 grid grid-cols-1 gap-5 pl-2">
           {filteredData.map((operator, index) => (
             <FerryCard key={index} operator={operator} />
           ))}
