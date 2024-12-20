@@ -1,16 +1,25 @@
 import { IoArrowForwardCircle } from "react-icons/io5";
-
+import { GR } from "country-flag-icons/react/3x2";
+import { IT } from "country-flag-icons/react/3x2";
+import { StarRating } from "./Rating";
+import Image from "next/image";
 export default function FerryCard({ operator }) {
   return (
     <div className="border rounded bg-white dark:bg-gray-800 text-sm border-gray-300 dark:border-gray-700">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 bg-gray-100 dark:bg-gray-700 px-5 py-2">
-        <h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-          {operator.name}
-        </h2>
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 bg-gray-100 dark:bg-gray-700 px-5 py-2">
+        <div className="text-xl font-bold mb-2 text-gray-900 dark:text-white ">
+          <Image
+            src={operator.logo}
+            alt={operator.name}
+            className="rounded w-40 h-8 md:w-60 md:h-9 object-fit object-center bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
         <div className="md:text-center md:text-right">
           <h1 className="font-semibold">{operator.name}</h1>
-          <div className="text-gray-600 dark:text-gray-300 text-xs flex items-center sm:space-x-2 md:justify-end font-normal">
-            <span className="text-yellow-500 text-lg">{operator.stars}</span>
+          <div className="text-gray-600 dark:text-gray-300 text-xs flex md:items-center flex-col md:flex-row sm:space-x-2 md:justify-end font-normal">
+            <span className="text-yellow-500 text-xs flex items-center space-x-1">
+              <StarRating rating={operator.stars} />
+            </span>
             <div className="flex items-center sm:space-x-1">
               <span>by: {operator.rating}</span>
               <span>Customers</span>
@@ -23,9 +32,18 @@ export default function FerryCard({ operator }) {
           <div className="flex flex-col">
             <div className="font-semibold">Operates in:</div>
             <div className="text-gray-600 dark:text-gray-300 flex items-center space-x-1 sm:space-x-2">
-              <span className="w-5 h-4 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
-                {operator.flag}
-              </span>
+              {operator.flag.includes("GR") && (
+                <GR
+                  title="Greece"
+                  className="w-6 h-6 flex item-center justify-center"
+                />
+              )}
+              {operator.flag.includes("IT") && (
+                <IT
+                  title="Italy"
+                  className="w-6 h-6 flex item-center justify-center"
+                />
+              )}
               <span>{operator.operatesIn}</span>
             </div>
           </div>
@@ -54,7 +72,7 @@ export default function FerryCard({ operator }) {
         </div>
         <div className="w-full md:w-1/2 p-2 px-5 text-sm">
           <p>{operator.description}</p>
-          <hr className="border-gray-300 dark:border-gray-700 my-4" />
+          <hr className="border-gray-300 dark:border-gray-700 mt-4" />
         </div>
       </div>
       <div className="flex justify-end items-center p-2">
