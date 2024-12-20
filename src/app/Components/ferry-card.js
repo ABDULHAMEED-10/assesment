@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function FerryCard({ operator }) {
   return (
     <div className="border rounded bg-white dark:bg-gray-800 text-sm border-gray-300 dark:border-gray-700">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 bg-gray-100 dark:bg-gray-700 px-5 py-2">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-5 bg-gray-100 dark:bg-gray-700 px-5 py-2">
         <div className="text-xl font-bold mb-2 text-gray-900 dark:text-white ">
           <Image
             src={operator.logo}

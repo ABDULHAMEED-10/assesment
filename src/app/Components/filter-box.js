@@ -1,19 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { IoLocationOutline } from "react-icons/io5";
+import { IoLocationOutline, IoChevronDown } from "react-icons/io5";
+
 export default function FilterBox({ onFilter, isVisible, toggleVisibility }) {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [ferryType, setFerryType] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const applyFilters = () => {
     onFilter({ country: selectedCountry, ferryType });
   };
+
   const countries = [
     { name: "Select a country", value: "" },
     { name: "Greece", value: "Greece", icon: "🇬🇷" },
     { name: "Italy", value: "Italy", icon: "🇮🇹" },
   ];
+
+  const handleCountrySelect = (country) => {
+    setSelectedCountry(country);
+    setIsDropdownOpen(false);
+  };
 
   return (
     <div className="relative rounded-lg">
@@ -34,14 +42,33 @@ export default function FilterBox({ onFilter, isVisible, toggleVisibility }) {
             <label className="block text-sm font-medium text-gray-900 dark:text-gray-100">
               Country
             </label>
-            <div className="border rounded p-2 bg-white dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 cursor-pointer">
-              <div className="flex items-center space-x-2">
-                <span className="w-5 h-5">
-                  <IoLocationOutline />
-                </span>
-                <span>{selectedCountry || "Select a country"}</span>
+            <div
+              className="border rounded p-2 bg-white dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 cursor-pointer"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <div className="flex items-center justify-between space-x-2">
+                <div className="flex items-center space-x-2">
+                  <span className="w-5 h-5">
+                    <IoLocationOutline />
+                  </span>
+                  <span>{selectedCountry || "Select a country"}</span>
+                </div>
+                <IoChevronDown />
               </div>
             </div>
+            {isDropdownOpen && (
+              <div className="mt-2 border rounded bg-white dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600">
+                {countries.map((country) => (
+                  <div
+                    key={country.value}
+                    className="p-2 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
+                    onClick={() => handleCountrySelect(country.value)}
+                  >
+                    {country.icon} {country.name}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="mb-4 space-y-2">
             <label className="block text-sm font-medium text-gray-900 dark:text-gray-100">
