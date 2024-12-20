@@ -25,11 +25,11 @@ export default function FerryOperators() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 relative">
       <Header />
-      <main className="container mx-auto pt-20 flex px-20">
-        <div className="absolute left-0 top-20 w-full lg:w-1/4 pr-2">
+      <main className="container mx-auto pt-16  md:pt-20  flex flex-col lg:flex-row px-4 lg:px-20">
+        <div className="w-full lg:w-1/4 lg:pr-2 mb-4 lg:mb-0">
           <FilterBox onFilter={handleFilter} />
         </div>
-        <div className="ml-auto w-full lg:w-3/4 grid grid-cols-1 gap-5 pl-2">
+        <div className="w-full lg:w-3/4 grid grid-cols-1 gap-5 lg:pl-2">
           {filteredData.map((operator, index) => (
             <FerryCard key={index} operator={operator} />
           ))}

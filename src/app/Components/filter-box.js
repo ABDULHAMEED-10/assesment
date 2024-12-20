@@ -18,7 +18,7 @@ export default function FilterBox({ onFilter, isVisible, toggleVisibility }) {
   return (
     <div className="relative rounded-lg">
       {isVisible && (
-        <div className="fixed top-20 left-24 w-80 rounded-lg p-4 border rounded border-gray-300  bg-gray-50 dark:bg-gray-800 dark:border-gray-700 z-50">
+        <div className="fixed top-20 left-0 right-4 sm:left-24 sm:right-auto w-full sm:w-80 rounded-lg p-4 border rounded border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 z-50">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">
               Filters
@@ -36,7 +36,7 @@ export default function FilterBox({ onFilter, isVisible, toggleVisibility }) {
             </label>
             <div className="border rounded p-2 bg-white dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 cursor-pointer">
               <div className="flex items-center space-x-2">
-                <span className="w-5 h-5 ">
+                <span className="w-5 h-5">
                   <IoLocationOutline />
                 </span>
                 <span>{selectedCountry || "Select a country"}</span>
