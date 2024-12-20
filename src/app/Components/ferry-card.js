@@ -15,8 +15,10 @@ export default function FerryCard({ operator }) {
           />
         </div>
         <div className="md:text-center md:text-right">
-          <h1 className="font-semibold">{operator.name}</h1>
-          <div className="text-gray-600 dark:text-gray-300 text-xs flex md:items-center flex-col md:flex-row sm:space-x-2 md:justify-end font-normal">
+          <h1 className="font-semibold md:text-lg hidden md:block">
+            {operator.name}
+          </h1>
+          <div className="text-gray-600 dark:text-gray-300 text-xs flex space-y-1 md:items-center flex-col md:flex-row sm:space-x-2 md:justify-end font-normal">
             <span className="text-yellow-500 text-xs flex items-center space-x-1">
               <StarRating rating={operator.stars} />
             </span>
